@@ -1,16 +1,22 @@
-module.exports = function(app){
+module.exports = function(application){
     //Com o ejs utiliza o response render
-    app.get('/formulario_inclusao_noticia', function(req, res){
+    application.get('/formulario_inclusao_noticia', function(req, res){
        res.render("admin/form_add_noticia");
     });
     
-    app.post('/noticias/salvar', function(req, res){
+    application.post('/noticias/salvar', function(req, res){
        
         //para utilizar o req.body, é preciso ter instalado o body-parser
         //npm install body-parser --save
-        var noticias = req.body;
+        var noticia = req.body;
        
-        res.send(noticias);
+        var conn = application.config.dbConnection();
+        var noticiaModel = application.app.models.noticiasModel;
+        
+        noticiaModel.salvarNoticia(noticia, conn, function (err, result) {
+            //nao funcionou esse redirect
+            res.redirect("/noticias");
+        });
        
     });
 }
