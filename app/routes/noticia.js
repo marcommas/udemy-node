@@ -14,11 +14,11 @@
 //    
 //    });
 //}
-module.exports = function(app){
+module.exports = function(application){
     
-    app.get('/noticia', function(req, res){
-        var conn = app.config.dbConnection();
-        var noticiaModel = app.app.models.noticiasModel;
+    application.get('/noticia', function(req, res){
+        var conn = application.config.dbConnection();
+        var noticiaModel = new application.app.models.noticiasDAO(conn);
         
         try {
             noticiaModel.getNoticias(conn, function (err, result) {

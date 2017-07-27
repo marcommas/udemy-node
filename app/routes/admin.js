@@ -11,7 +11,7 @@ module.exports = function(application){
         var noticia = req.body;
        
         var conn = application.config.dbConnection();
-        var noticiaModel = application.app.models.noticiasModel;
+        var noticiaModel = new application.app.models.noticiasDAO((conn));
         
         noticiaModel.salvarNoticia(noticia, conn, function (err, result) {
             //nao funcionou esse redirect
