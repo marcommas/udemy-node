@@ -1,6 +1,7 @@
-module.exports = function(app){
+module.exports = function(application){
     //Com o ejs utiliza o response render
-    app.get('/', function(req, res){
-       res.render("home/index");
+    application.get('/', function(req, res){
+//       res.render("home/index");
+        application.app.controllers.home.index(application, req, res);
     });
 }

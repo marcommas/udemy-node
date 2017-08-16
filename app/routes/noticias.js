@@ -48,12 +48,12 @@ module.exports = function(application){
     
     application.get('/noticias', function(req, res){
         
-        var conn = application.config.dbConnection();
-        var noticiaModel = new application.app.models.noticiasDAO((conn));
-        
-        noticiaModel.getNoticias(conn, function (err, result) {
-              res.render("noticias/noticias", {noticias: result.rows});
-        });
+//        var conn = application.config.dbConnection();
+//        var noticiaModel = new application.app.models.noticiasDAO((conn));
+//        
+//        noticiaModel.getNoticias(conn, function (err, result) {
+//              res.render("noticias/noticias", {noticias: result.rows});
+//        });
         
         
 //        conn.connect();
@@ -66,6 +66,22 @@ module.exports = function(application){
 //        } catch (err) {
 //          console.log("!!! ERRO DE EXCECAO Repositorio Apoio: " + err.message);
 //        }
+        
+        application.app.controllers.noticias.noticias(application, req, res);
+    });
     
+    application.get('/noticia', function(req, res){
+//        var conn = application.config.dbConnection();
+//        var noticiaModel = new application.app.models.noticiasDAO(conn);
+//        
+//        try {
+//            noticiaModel.getNoticias(conn, function (err, result) {
+//                res.render("noticias/noticia", {noticia: result.rows});
+//            });
+//        } catch (err) {
+//          console.log("!!! ERRO DE EXCECAO Repositorio Apoio: " + err.message);
+//        }
+        
+        application.app.controllers.noticias.noticia(application, req, res);
     });
 }
