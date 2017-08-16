@@ -13,8 +13,10 @@ NoticiasDAO.prototype.getNoticia = function(callback){
 }
 
 NoticiasDAO.prototype.salvarNoticia = function(noticia, callback){
-    var queryInsertNoticia = "INSERT INTO adm.boleto_responsavel_financeiro (brf_nome, brf_cpf_cnpj, brf_tipo_pessoa, brf_data_nascimento, brf_endereco_cep, brf_endereco_uf, brf_endereco_cidade, brf_endereco_bairro, brf_endereco_logradouro, brf_endereco_numero, brf_endereco_complemento, brf_data_hora_cadastro,brf_validado) VALUES ('" + noticia.nome + "','" + noticia.cpfCnpj + "', 'F', now(), '', '', '', '', '', '', '', now(), 'T')";
-        
+    console.log(noticia);
+    var queryInsertNoticia = "INSERT INTO adm.boleto_responsavel_financeiro (brf_nome, brf_cpf_cnpj, brf_tipo_pessoa, brf_data_nascimento, brf_endereco_cep, brf_endereco_uf, brf_endereco_cidade, brf_endereco_bairro, brf_endereco_logradouro, brf_endereco_numero, brf_endereco_complemento, brf_data_hora_cadastro,brf_validado) VALUES ('" + noticia.brf_nome + "','" + noticia.brf_cpf_cnpj + "', 'F','" + noticia.brf_data_nascimento + "', '', '', '', '', '" + noticia.brf_endereco_logradouro + "' , '', '', now(), 'T')";
+    
+    console.log(queryInsertNoticia);
     try{
         this._conn.query(queryInsertNoticia, callback);
     } catch (ex) {

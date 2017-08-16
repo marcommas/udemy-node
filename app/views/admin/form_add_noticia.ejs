@@ -8,13 +8,32 @@
     <body>
         
         <h1>Adicionar Resp</h1>
+
+        <% if(validacao) { %>
+            <ul>
+                <% for(var i=0; i < validacao.length ;i++){ %>
+                    <li>
+                        <%= validacao[i].msg %>
+                    </li>
+                <% } %>
+            </ul>
+        <% } %>
+
         <form action="/noticias/salvar" method="post">
             <label>Título</label>
-            <input type="text" id ="nome" name="nome" placeholder="Nome" />
+            <input type="text" id ="brf_nome" name="brf_nome" value="<%=noticia.brf_nome%>" placeholder="Nome"  />
             <br>
             
-            <label>Notícia</label>
-            <input type="text" id="cpfCnpj" name="cpfCnpj" placeholder="CPF/CNPJ" />
+            <label>CPF</label>
+            <input type="text" id="brf_cpf_cnpj" name="brf_cpf_cnpj" value="<%=noticia.brf_cpf_cnpj%>" placeholder="CPF/CNPJ" />
+            
+            <br>    
+            <label>Endereço</label>
+            <input type="text" id="brf_endereco_logradouro" name="brf_endereco_logradouro" value="<%=noticia.brf_endereco_logradouro%>" placeholder="Logradouro" />
+            
+            <br>
+            <label>Data Nascimento</label>
+            <input type="date" id="brf_data_nascimento" name="brf_data_nascimento"  value="<%=noticia.brf_data_nascimento%>" />
             
             <br>
             <input type="submit" value="Enviar" />
