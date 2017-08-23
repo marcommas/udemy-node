@@ -24,6 +24,10 @@ NoticiasDAO.prototype.salvarNoticia = function(noticia, callback){
     }
 }
 
+NoticiasDAO.prototype.get5UltimasNoticias = function(callback){
+    var queryNoticia = "SELECT brf_id, brf_nome, brf_endereco_cidade , brf_data_hora_cadastro FROM adm.boleto_responsavel_financeiro WHERE brf_id IN (290, 289, 288, 287, 286)   ";
+    this._conn.query(queryNoticia, callback);
+}
 module.exports = function(){
     
     return NoticiasDAO;
